@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
             exit();
         }
     } else {
-        echo "<script>alert('Login Gagal!'); window.location.replace('login.php');</script>";
+        echo "<script>alert('Login Gagal!'); window.location.replace('login.html');</script>";
         exit();
     }
 }
@@ -36,7 +36,7 @@ if (isset($_POST['register'])) {
     $sql = mysqli_query($koneksi, "INSERT INTO account (username,password) VALUES ('$username','$password')");
 
     if ($sql) {
-        echo "<script>alert('Akun berhasil ditambahkan!'); window.location.replace('login.php');</script>";
+        echo "<script>alert('Akun berhasil ditambahkan!'); window.location.replace('login.html');</script>";
     } else {
         echo "<script>alert('Gagal')</script>";
     }
@@ -57,8 +57,8 @@ if (isset($_POST['booking'])) {
 
     $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,kostum,sepatu,total,bayar) VALUES('$nama_pemesan','$no_telepon','$tgl_pesan','$jam','$durasi_sewa','$jumlah_pemain','$lapangan','$kostum','$sepatu','$total','$bayar')");
 
-    if($sql) {
-        echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking_confirm.php');</script>";
+    if ($sql) {
+        echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking/booking_confirm.php');</script>";
     }
 }
 

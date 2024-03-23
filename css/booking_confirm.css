@@ -1,0 +1,153 @@
+:root {
+  --ld: "Lexend Deca", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+  background-color: #000;
+}
+
+nav {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 9999;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+nav .logo a {
+  font-family: var(--ld);
+  font-weight: 100;
+  color: #fff;
+}
+
+nav .extra-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+nav .extra-nav a {
+  font-family: var(--ld);
+  color: #fff;
+}
+nav .extra-nav a:nth-child(1),
+nav .extra-nav a:nth-child(3) {
+  padding: 10px;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+}
+
+nav .extra-nav a:nth-child(1):hover,
+nav .extra-nav a:nth-child(3):hover {
+  background-color: #fff;
+  color: #000;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/booking-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+main .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: brightness(60%);
+  height: 100vh;
+  width: 100%;
+}
+
+main .content .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+main .content .container::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #fff;
+  width: 50%;
+  display: block;
+  margin: 20% 15% 0 13%;
+}
+
+main .content .container h1 {
+  color: #fff;
+  font-size: 36px;
+  text-align: center;
+}
+
+main .content .container table,
+th,
+tr,
+td {
+  border: 1px solid #fff;
+  padding: 5px;
+  color: #fff;
+}
+
+main .content .container .row {
+  display: flex;
+  right: 0;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+main .content .container .row p {
+  color: #fff;
+}
+
+main .content .container .row .action {
+  display: flex;
+  gap: 1rem;
+}
+
+main .content .container .row .action input {
+  background: transparent;
+  color: #fff;
+  font-family: var(--ld);
+  border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+main .content .container .row .action input:hover {
+  color: #000;
+  background: #fff;
+}

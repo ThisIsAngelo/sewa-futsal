@@ -13,6 +13,7 @@ $username = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/booking.css">
+    <link rel="icon" href="../img/logo-icon.jpg">
     <title>Document</title>
 </head>
 
@@ -85,7 +86,7 @@ $username = $_SESSION['username'];
                     <div class="row-5">
                         <div class="col-1">
                             <label for="harga">Harga Bayar</label>
-                            <input type="number" id="harga" name="total" disabled>
+                            <input type="number" id="harga" name="total">
                         </div>
                         <div class="col-2">
                             <label for="bayar">Bayar</label>

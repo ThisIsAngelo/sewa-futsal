@@ -14,6 +14,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/user.css">
+    <link rel="icon" href="img/logo-icon.jpg">
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,11 +30,11 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
         </div>
 
         <nav class="navbar">
-            <a href="">Home</a>
-            <a href="">Guide</a>
-            <a href="">Book</a>
-            <a href="">About</a>
-            <a href="">Contact</a>
+            <a href="#hero">Home</a>
+            <a href="#guide">Guide</a>
+            <a href="#book">Book</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </nav>
 
         <div class="extra-nav">
@@ -42,14 +43,14 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
             ?>
                 <a href="logout.php" class="logout" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
             <?php } else { ?>
-                <a href="login.php">Login</a>
+                <a href="login.html">Login</a>
                 <a href="register.php" class="register">Register</a>
             <?php } ?>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section id="hero" class="hero">
             <div class="content">
                 <div class="c-1">
                     <h1>Selamat Datang Di <br>Persewaan Lapangan Futsal</h1>
@@ -59,7 +60,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                     ?>
                         <a href="booking/booking.php">Booking Sekarang</a>
                     <?php } else { ?>
-                        <a href="login.php">Booking Sekarang</a>
+                        <a href="login.html">Booking Sekarang</a>
                     <?php } ?>
                 </div>
                 <div class="c-2">
@@ -67,10 +68,10 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                 </div>
             </div>
         </section>
-        <section class="guide">
+        <section id="guide" class="guide">
             <div class="title">
                 <h1>GUIDE</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore earum magni officiis fugiat totam sint.</p>
+                <p>Panduan singkat untuk melakukan pemesanan lapangan futsal secara online.</p>
             </div>
             <div class="content">
                 <div class="col-1">
