@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 04:36 AM
+-- Generation Time: Mar 23, 2024 at 05:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `persewaan_futsal`
+-- Database: `sewa_futsal`
 --
 
 -- --------------------------------------------------------
@@ -39,16 +39,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `role`) VALUES
-(1, 'Chris', '202cb962ac59075b964b07152d234b70', 1),
-(2, 'Steve', '202cb962ac59075b964b07152d234b70', 0),
-(3, 'Ayam', '202cb962ac59075b964b07152d234b70', 0),
-(4, 'Angelo', 'bffa783a022fe2d98692014dda6d7a4c', 0),
-(5, 'Pino', '202cb962ac59075b964b07152d234b70', 0),
-(6, 'Fatah', '202cb962ac59075b964b07152d234b70', 0),
-(7, '123', '202cb962ac59075b964b07152d234b70', 0),
-(8, 'halo', '202cb962ac59075b964b07152d234b70', 0),
-(9, 'asdaha', '33df1b9b8ca30f9f6b7febd0fd874f0f', 0),
-(10, 'Rena', 'af7c5fe76c002dbbea7f2849716d516f', 0);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 'user', '202cb962ac59075b964b07152d234b70', 0);
 
 -- --------------------------------------------------------
 
@@ -95,13 +87,6 @@ CREATE TABLE `sewa_confirm` (
   `total` int(11) NOT NULL,
   `bayar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sewa_confirm`
---
-
-INSERT INTO `sewa_confirm` (`id`, `nama_pemesan`, `no_telepon`, `tgl_pesan`, `jam`, `durasi_sewa`, `jumlah_pemain`, `lapangan`, `kostum`, `sepatu`, `total`, `bayar`) VALUES
-(1, 'Chris', '0888888888', '2024-03-22', '16:00:00', 2, 10, 'indoor', 0, 0, 1500000, 1500000);
 
 --
 -- Indexes for dumped tables
