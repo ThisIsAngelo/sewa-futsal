@@ -11,8 +11,8 @@ $username = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/booking.css">
-    <link rel="icon" href="../img/logo-icon.jpg">
-    <title>Document</title>
+    <link rel="icon" href="../img/logo-icon.jpeg">
+    <title>Booking</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@ $username = $_SESSION['username'];
     <nav>
         <div class="logo">
             <img width="60" src="../img/logo.png">
-            <a href="#">Logo</a>
+            <a href="#">Futsalaxy</a>
         </div>
 
         <div class="extra-nav">

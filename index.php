@@ -14,19 +14,19 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/user.css">
-    <link rel="icon" href="img/logo-icon.jpg">
+    <link rel="icon" href="img/logo-icon.jpeg">
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
-    <title>Persewaan Lapangan Futsal</title>
+    <title>Futsalaxy</title>
 </head>
 
 <body>
     <header>
         <div class="logo">
             <img width="60" src="img/logo.png">
-            <a href="#">Logo</a>
+            <a href="#">Futsalaxy</a>
         </div>
 
         <nav class="navbar">
@@ -44,7 +44,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                 <a href="logout.php" class="logout" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
             <?php } else { ?>
                 <a href="login.html">Login</a>
-                <a href="register.php" class="register">Register</a>
+                <a href="register.html" class="register">Register</a>
             <?php } ?>
         </div>
     </header>

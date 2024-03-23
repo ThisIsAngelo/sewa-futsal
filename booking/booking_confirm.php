@@ -13,7 +13,7 @@ $no = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/logo-icon.jpg">
+    <link rel="icon" href="../img/logo-icon.jpeg">
     <link rel="stylesheet" href="../css/booking_confirm.css">
     <title>Confirm Your Booking</title>
 </head>
@@ -22,7 +22,7 @@ $no = 0;
     <nav>
         <div class="logo">
             <img width="60" src="../img/logo.png">
-            <a href="#">Logo</a>
+            <a href="#">Futsalaxy</a>
         </div>
 
         <div class="extra-nav">
