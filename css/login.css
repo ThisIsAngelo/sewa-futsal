@@ -1,0 +1,80 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Orbitron", monospace;
+  /* border: 1px solid red; */
+}
+
+body {
+  background-color: #000;
+}
+
+.container {
+  background-image: url(../img/login-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.container .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  backdrop-filter: brightness(50%);
+}
+
+.container .content form {
+  /* border: 1px solid #fff; */
+  box-shadow: 0.5px 1px 0px 0 #fff;
+  padding: 2rem;
+  width: 25%;
+  padding: 5rem 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.container .content h1 {
+  color: #fff;
+  text-align: center;
+  font-weight: 900;
+}
+
+.container .content form input[type="text"],
+.container .content form input[type="password"] {
+  padding: 15px;
+  width: 100%;
+  color: #fff;
+  background: transparent;
+}
+
+.container .content form input[type="text"]::placeholder,
+.container .content form input[type="password"]::placeholder {
+  color: #fff;
+}
+
+.container .content form input[type="submit"] {
+  padding: 8px 5px;
+  cursor: pointer;
+  background: transparent;
+  /* border: 1px solid #fff; */
+  font-weight: 500;
+  color: #fff;
+}
+
+.container .content form p {
+  color: #fff;
+  font-size: 14px;
+}
+
+.container .content form a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.container .content form p .back {
+  text-decoration: none;
+}

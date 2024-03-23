@@ -1,0 +1,276 @@
+:root {
+  --ld: "Lexend Deca", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+  background-color: #000;
+}
+
+nav {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 9999;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+nav .logo a {
+  font-family: var(--ld);
+  font-weight: 100;
+  color: #fff;
+}
+
+nav .extra-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+nav .extra-nav a {
+  font-family: var(--ld);
+  color: #fff;
+}
+nav .extra-nav a:nth-child(1),
+nav .extra-nav a:nth-child(3) {
+  padding: 10px;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+}
+
+nav .extra-nav a:nth-child(1):hover,
+nav .extra-nav a:nth-child(3):hover {
+  background-color: #fff;
+  color: #000;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main .booking {
+  min-height: 100vh;
+  background-image: url(../img/booking-bg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+main .booking .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: brightness(40%);
+  min-height: 100vh;
+}
+
+main .booking .content form {
+  min-height: 72vh;
+  width: 40%;
+  padding: 30px;
+  border: 2px solid #fff;
+  border-radius: 16px;
+}
+
+main .booking .content form h1 {
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+main .booking .content form .row-1,
+main .booking .content form .row-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+main .booking .content form .row-1 input {
+  width: 48%;
+  padding: 10px 15px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background: transparent;
+  transition: 0.1s ease-in;
+}
+
+main .booking .content form .row-1 input:focus {
+  background-color: #fff;
+  color: #000;
+}
+
+main .booking .content form .row-1 input::placeholder {
+  font-family: var(--ld);
+  color: #fff;
+}
+
+main .booking .content form .row-2 .col-1,
+main .booking .content form .row-2 .col-2,
+main .booking .content form .row-2 .col-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 32%;
+}
+
+main .booking .content form .row-2 .col-1 label,
+main .booking .content form .row-2 .col-2 label,
+main .booking .content form .row-2 .col-3 label {
+  color: #fff;
+  text-align: center;
+}
+
+main .booking .content form .row-2 input[type="date"] {
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+}
+
+main
+  .booking
+  .content
+  form
+  .row-2
+  input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+main .booking .content form .row-2 input[type="time"] {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+}
+
+main
+  .booking
+  .content
+  form
+  .row-2
+  input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+main .booking .content form .row-2 input[type="number"] {
+  padding: 8.5px 10px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+}
+
+main .booking .content form .row-2 input[type="number"]::placeholder {
+  font-family: var(--ld);
+  color: #fff;
+}
+
+main .booking .content form .row-3,
+main .booking .content form .row-4,
+main .booking .content form .row-5 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+main .booking .content form .row-3 .col-1,
+main .booking .content form .row-3 .col-2,
+main .booking .content form .row-4 .col-1,
+main .booking .content form .row-4 .col-2,
+main .booking .content form .row-5 .col-1,
+main .booking .content form .row-5 .col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 45%;
+}
+
+main .booking .content form .row-3 .col-1 label,
+main .booking .content form .row-3 .col-2 label,
+main .booking .content form .row-4 .col-1 label,
+main .booking .content form .row-4 .col-2 label,
+main .booking .content form .row-5 .col-1 label,
+main .booking .content form .row-5 .col-2 label {
+  text-align: center;
+  color: #fff;
+}
+
+main .booking .content form .row-3 .col-1 select,
+main .booking .content form .row-3 .col-2 select,
+main .booking .content form .row-4 .col-1 input,
+main .booking .content form .row-4 .col-2 input,
+main .booking .content form .row-5 .col-1 input,
+main .booking .content form .row-5 .col-2 input {
+  padding: 4px 6px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  font-family: var(--ld);
+}
+
+main .booking .content form .row-3 .col-1 select option,
+main .booking .content form .row-3 .col-2 select option {
+  color: #000;
+  font-family: var(--ld);
+}
+
+main .booking .content form .row-4 .col-1 input::placeholder,
+main .booking .content form .row-4 .col-2 input::placeholder,
+main .booking .content form .row-5 .col-1 input::placeholder,
+main .booking .content form .row-5 .col-2 input::placeholder {
+  color: #fff;
+  font-family: var(--ld);
+}
+
+main .booking .content form .row-6 {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+main .booking .content form .row-6 a,
+main .booking .content form .row-6 input {
+  padding: 7px 15px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-family: var(--ld);
+  color: #fff;
+  transition: 0.2s ease-in;
+  background: transparent;
+  cursor: pointer;
+}
+
+main .booking .content form .row-6 a:hover,
+main .booking .content form .row-6 input:hover {
+  background: #fff;
+  color: #000;
+}
