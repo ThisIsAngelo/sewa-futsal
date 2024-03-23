@@ -102,7 +102,16 @@ main .content .container::after {
   border-bottom: 1px solid #fff;
   width: 50%;
   display: block;
-  margin: 20% 15% 0 13%;
+  margin: 24% 20% 0 17%;
+}
+
+main .content .container::before {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #fff;
+  width: 35%;
+  display: block;
+  margin: 26% 20% 0 23%;
 }
 
 main .content .container h1 {

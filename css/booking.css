@@ -193,7 +193,13 @@ main .booking .content form .row-2 input[type="number"]::placeholder {
   color: #fff;
 }
 
-main .booking .content form .row-3,
+main .booking .content form .row-3 {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
 main .booking .content form .row-4,
 main .booking .content form .row-5 {
   display: flex;
@@ -203,6 +209,7 @@ main .booking .content form .row-5 {
 
 main .booking .content form .row-3 .col-1,
 main .booking .content form .row-3 .col-2,
+main .booking .content form .row-3 .col-3,
 main .booking .content form .row-4 .col-1,
 main .booking .content form .row-4 .col-2,
 main .booking .content form .row-5 .col-1,
@@ -215,6 +222,7 @@ main .booking .content form .row-5 .col-2 {
 
 main .booking .content form .row-3 .col-1 label,
 main .booking .content form .row-3 .col-2 label,
+main .booking .content form .row-3 .col-3 label,
 main .booking .content form .row-4 .col-1 label,
 main .booking .content form .row-4 .col-2 label,
 main .booking .content form .row-5 .col-1 label,
@@ -225,6 +233,7 @@ main .booking .content form .row-5 .col-2 label {
 
 main .booking .content form .row-3 .col-1 select,
 main .booking .content form .row-3 .col-2 select,
+main .booking .content form .row-3 .col-3 select,
 main .booking .content form .row-4 .col-1 input,
 main .booking .content form .row-4 .col-2 input,
 main .booking .content form .row-5 .col-1 input,
@@ -238,7 +247,8 @@ main .booking .content form .row-5 .col-2 input {
 }
 
 main .booking .content form .row-3 .col-1 select option,
-main .booking .content form .row-3 .col-2 select option {
+main .booking .content form .row-3 .col-2 select option,
+main .booking .content form .row-3 .col-3 select option {
   color: #000;
   font-family: var(--ld);
 }
@@ -257,8 +267,36 @@ main .booking .content form .row-6 {
   gap: 1rem;
 }
 
-main .booking .content form .row-6 a,
-main .booking .content form .row-6 input {
+main .booking .content form .row-6 .group-1 {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  gap: 0.3rem;
+}
+
+main .booking .content form .row-6 .group-1 label {
+  color: #fff;
+  text-align: center;
+}
+
+main .booking .content form .row-6 .group-1 input {
+  padding: 4px 6px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  font-family: var(--ld);
+}
+
+main .booking .content form .row-6 .group-2 {
+  display: flex;
+  align-items: center;
+  width: 45%;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+main .booking .content form .row-6 .group-2 a {
   padding: 7px 15px;
   border: 1px solid #fff;
   border-radius: 5px;
@@ -269,8 +307,19 @@ main .booking .content form .row-6 input {
   cursor: pointer;
 }
 
-main .booking .content form .row-6 a:hover,
-main .booking .content form .row-6 input:hover {
+main .booking .content form .row-6 .group-2 input {
+  padding: 10px 15px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-family: var(--ld);
+  color: #fff;
+  transition: 0.2s ease-in;
+  background: transparent;
+  cursor: pointer;
+}
+
+main .booking .content form .row-6 .group-2 a:hover,
+main .booking .content form .row-6 .group-2 input:hover {
   background: #fff;
   color: #000;
 }
