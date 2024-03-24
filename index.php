@@ -19,6 +19,10 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <script src="https://kit.fontawesome.com/88d08e83f5.js" crossorigin="anonymous"></script>
+
     <title>Futsalaxy</title>
 </head>
 
@@ -53,15 +57,24 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
         <section id="hero" class="hero">
             <div class="content">
                 <div class="c-1">
-                    <h1>Selamat Datang Di <br>Persewaan Lapangan Futsal</h1>
+                    <h1>WELCOME TO <span style="color: #fff; font-weight: bold;">FUTSALAXY</span></h1>
                     <p>Dengan sistem pembayaran yang aman dan dukungan pelanggan yang responsif, kami berkomitmen untuk memberikan pengalaman pemesanan lapangan futsal yang menyenangkan dan tanpa kerumitan. Jadikan setiap momen bermain futsal Anda lebih mudah dan menyenangkan!</p>
-                    <?php
-                    if (isset($_SESSION['username'])) {
-                    ?>
-                        <a href="booking/booking.php">Booking Sekarang</a>
-                    <?php } else { ?>
-                        <a href="login.html">Booking Sekarang</a>
-                    <?php } ?>
+                    <div class="row-1">
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                        ?>
+                            <a href="booking/booking.php">Booking Now</a>
+                        <?php } else { ?>
+                            <a href="login.html">Booking Now</a>
+                        <?php } ?>
+                        <a href="#guide">How To Book</a>
+                    </div>
+                    <div class="row-2">
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
                 </div>
                 <div class="c-2">
                     <img src="img/logo.png" alt="">
@@ -137,43 +150,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
             </div>
         </section>
     </main>
+
 </body>
 
 </html>
-
-<!-- <h1>Halo <?= $username ?></h1>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>LAPANGAN</th>
-                            <th colspan="3">INDOOR</th>
-                            <th colspan="3">OUTDOOR</th>
-                        </tr>
-                        <tr>
-                            <th>Jenis Lapangan</th>
-                            <th>Reguler</th>
-                            <th>Matras</th>
-                            <th>Rumput</th>
-                            <th>Reguler</th>
-                            <th>Matras</th>
-                            <th>Rumput</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($result = mysqli_fetch_assoc($sql)) :
-                        ?>
-                            <tr>
-                                <td>Biaya Lapangan</td>
-                                <td>Rp.<?= $result['reguler_indoor'] ?></td>
-                                <td>Rp.<?= $result['matras_indoor'] ?></td>
-                                <td>Rp.<?= $result['rumput_indoor'] ?></td>
-                                <td>Rp.<?= $result['reguler_outdoor'] ?></td>
-                                <td>Rp.<?= $result['matras_outdoor'] ?></td>
-                                <td>Rp.<?= $result['rumput_outdoor'] ?></td>
-                            </tr>
-                        <?php
-                        endwhile
-                        ?>
-                    </tbody>
-                </table> -->
