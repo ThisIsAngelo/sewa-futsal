@@ -75,6 +75,7 @@ header .extra-nav a {
   font-family: var(--ld);
   color: #fff;
 }
+
 header .extra-nav .register,
 header .extra-nav .logout {
   padding: 10px;

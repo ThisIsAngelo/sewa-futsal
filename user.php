@@ -2,8 +2,13 @@
 include 'koneksi.php';
 session_start();
 
-$sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
+$id = $_SESSION['id'];
+$username = $_SESSION['username'];
 
+if (!isset($_SESSION['username'])) {
+    header('location:login.html');
+    exit();
+}
 ?>
 
 
@@ -42,14 +47,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
         </nav>
 
         <div class="extra-nav">
-            <?php
-            if (isset($_SESSION['username'])) {
-            ?>
-                <a href="logout.php" class="logout" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
-            <?php } else { ?>
-                <a href="login.html">Login</a>
-                <a href="register.html" class="register">Register</a>
-            <?php } ?>
+            <a href="logout.php" class="logout" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
         </div>
     </header>
 
@@ -57,16 +55,10 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
         <section id="hero" class="hero">
             <div class="content">
                 <div class="c-1">
-                    <h1>WELCOME TO <span style="color: #fff; font-weight: bold;">FUTSALAXY</span></h1>
+                    <h1>WELCOME TO <span style="color: #fff; font-weight: bold;">FUTSALAXY</span> <?= $username ?>!</h1>
                     <p>Dengan sistem pembayaran yang aman dan dukungan pelanggan yang responsif, kami berkomitmen untuk memberikan pengalaman pemesanan lapangan futsal yang menyenangkan dan tanpa kerumitan. Jadikan setiap momen bermain futsal Anda lebih mudah dan menyenangkan!</p>
                     <div class="row-1">
-                        <?php
-                        if (isset($_SESSION['username'])) {
-                        ?>
-                            <a href="booking/booking.php">Booking Now</a>
-                        <?php } else { ?>
-                            <a href="login.html">Booking Now</a>
-                        <?php } ?>
+                        <a href="booking/booking.php">Booking Now</a>
                         <a href="#guide">How To Book</a>
                     </div>
                     <div class="row-2">
@@ -187,11 +179,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                             <p>110 Booking</p>
                         </div>
                         <div class="arrow">
-                            <?php if (isset($_SESSION['username'])) { ?>
-                                <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
-                            <?php } else { ?>
-                                <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
-                            <?php } ?>
+                            <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="row-2">
@@ -201,11 +189,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                             <p>87 Booking</p>
                         </div>
                         <div class="arrow">
-                            <?php if (isset($_SESSION['username'])) { ?>
-                                <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
-                            <?php } else { ?>
-                                <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
-                            <?php } ?>
+                            <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="row-3">
@@ -215,11 +199,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                             <p>132 Booking</p>
                         </div>
                         <div class="arrow">
-                            <?php if (isset($_SESSION['username'])) { ?>
-                                <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
-                            <?php } else { ?>
-                                <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
-                            <?php } ?>
+                            <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

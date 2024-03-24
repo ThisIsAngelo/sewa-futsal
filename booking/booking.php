@@ -1,6 +1,7 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+$id_user = $_SESSION['id'];
 
 if (!isset($_SESSION['username'])) {
     header('location:../login.html');
@@ -110,7 +111,7 @@ if (!isset($_SESSION['username'])) {
                             <input type="number" id="kembali" name="kembali" readonly>
                         </div>
                         <div class="group-2">
-                            <a href="../index.php">Back</a>
+                            <a href="../user.php">Back</a>
                             <input type="submit" value="Booking Now" name="booking">
                         </div>
                     </div>

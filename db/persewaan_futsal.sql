@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 05:05 PM
+-- Generation Time: Mar 24, 2024 at 06:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -48,7 +48,8 @@ INSERT INTO `account` (`id`, `username`, `password`, `role`) VALUES
 (7, '123', '202cb962ac59075b964b07152d234b70', 0),
 (8, 'halo', '202cb962ac59075b964b07152d234b70', 0),
 (9, 'asdaha', '33df1b9b8ca30f9f6b7febd0fd874f0f', 0),
-(10, 'Rena', 'af7c5fe76c002dbbea7f2849716d516f', 0);
+(10, 'Rena', 'af7c5fe76c002dbbea7f2849716d516f', 0),
+(11, 'Revo', '202cb962ac59075b964b07152d234b70', 0);
 
 -- --------------------------------------------------------
 
@@ -83,6 +84,7 @@ INSERT INTO `harga_sewa` (`id`, `reguler_indoor`, `matras_indoor`, `rumput_indoo
 
 CREATE TABLE `sewa_confirm` (
   `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama_pemesan` varchar(50) NOT NULL,
   `no_telepon` varchar(20) NOT NULL,
   `tgl_pesan` date NOT NULL,
@@ -97,6 +99,72 @@ CREATE TABLE `sewa_confirm` (
   `bayar` int(11) NOT NULL,
   `kembali` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sewa_user`
+--
+
+CREATE TABLE `sewa_user` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `nama_pemesan` varchar(50) NOT NULL,
+  `no_telepon` varchar(20) NOT NULL,
+  `tgl_pesan` date NOT NULL,
+  `jam` time NOT NULL,
+  `durasi_sewa` int(11) NOT NULL,
+  `jumlah_pemain` int(11) NOT NULL,
+  `lapangan` varchar(7) NOT NULL,
+  `jenis_lapangan` varchar(10) NOT NULL,
+  `kostum` int(11) NOT NULL,
+  `sepatu` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `bayar` int(11) NOT NULL,
+  `kembali` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_lapangan_indoor`
+--
+
+CREATE TABLE `status_lapangan_indoor` (
+  `id` int(11) NOT NULL,
+  `jenis_lapangan` varchar(20) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status_lapangan_indoor`
+--
+
+INSERT INTO `status_lapangan_indoor` (`id`, `jenis_lapangan`, `status`) VALUES
+(1, 'reguler', 1),
+(2, 'matras', 1),
+(3, 'rumput', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_lapangan_outdoor`
+--
+
+CREATE TABLE `status_lapangan_outdoor` (
+  `id` int(11) NOT NULL,
+  `jenis_lapangan` varchar(20) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status_lapangan_outdoor`
+--
+
+INSERT INTO `status_lapangan_outdoor` (`id`, `jenis_lapangan`, `status`) VALUES
+(1, 'reguler', 1),
+(2, 'matras', 1),
+(3, 'rumput', 1);
 
 --
 -- Indexes for dumped tables
@@ -119,6 +187,26 @@ ALTER TABLE `harga_sewa`
 -- Indexes for table `sewa_confirm`
 --
 ALTER TABLE `sewa_confirm`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `sewa_user`
+--
+ALTER TABLE `sewa_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `status_lapangan_indoor`
+--
+ALTER TABLE `status_lapangan_indoor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `status_lapangan_outdoor`
+--
+ALTER TABLE `status_lapangan_outdoor`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -129,7 +217,7 @@ ALTER TABLE `sewa_confirm`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `harga_sewa`
@@ -141,7 +229,41 @@ ALTER TABLE `harga_sewa`
 -- AUTO_INCREMENT for table `sewa_confirm`
 --
 ALTER TABLE `sewa_confirm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
+-- AUTO_INCREMENT for table `sewa_user`
+--
+ALTER TABLE `sewa_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `status_lapangan_indoor`
+--
+ALTER TABLE `status_lapangan_indoor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `status_lapangan_outdoor`
+--
+ALTER TABLE `status_lapangan_outdoor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `sewa_confirm`
+--
+ALTER TABLE `sewa_confirm`
+  ADD CONSTRAINT `sewa_confirm_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `account` (`id`);
+
+--
+-- Constraints for table `sewa_user`
+--
+ALTER TABLE `sewa_user`
+  ADD CONSTRAINT `sewa_user_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `account` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -19,9 +19,10 @@ if (isset($_POST['login'])) {
             header('location:admin.php');
             exit();
         } else if ($role == 0) {
+            $_SESSION['id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['role'] = $role;
-            header('location:index.php ?>');
+            header('location:user.php ?>');
             exit();
         }
     } else {
@@ -43,6 +44,7 @@ if (isset($_POST['register'])) {
 }
 
 if (isset($_POST['booking'])) {
+    $id_user = $_SESSION['id'];
     $nama_pemesan = $_POST['nama_pemesan'];
     $no_telepon = $_POST['no_telepon'];
     $tgl_pesan = $_POST['tgl_pesan'];
@@ -57,8 +59,8 @@ if (isset($_POST['booking'])) {
     $bayar = $_POST['bayar'];
     $kembali = $_POST['kembali'];
 
-    $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali) VALUES ('$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', '$jenis_lapangan' , '$kostum', '$sepatu', '$total', '$bayar', '$kembali')");
-    if ($bayar <= $total) {
+    $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (id_user,nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali) VALUES ('$id_user','$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', '$jenis_lapangan' , '$kostum', '$sepatu', '$total', '$bayar', '$kembali')");
+    if ($bayar < $total) {
         echo "<script>alert('Uang tidak cukup'); window.location.replace('booking/booking.php');</script>";
     } else {
         if ($sql) {
@@ -72,6 +74,31 @@ if (isset($_POST['cancel'])) {
 
     if ($sql) {
         echo "<script>alert('Booking telah di cancel'); window.location.replace('booking/booking.php')</script>";
+    }
+}
+
+if (isset($_POST['confirm'])) {
+    $id_user = $_SESSION['id'];
+    $sql = mysqli_query($koneksi, "INSERT INTO sewa_user (id_user,nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali) SELECT '$id_user',nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali FROM sewa_confirm");
+    
+    if ($sql) {
+        $sqlDelete = mysqli_query($koneksi, "DELETE FROM sewa_confirm");
+        $sewa_user = mysqli_query($koneksi, "SELECT * FROM sewa_user ORDER BY id DESC LIMIT 1");
+        $row = mysqli_fetch_assoc($sewa_user);
+        $lapangan = $row['lapangan'];
+        if ($lapangan == 'INDOOR') {
+            $sewa_user = mysqli_query($koneksi, "SELECT * FROM sewa_user ORDER BY id DESC LIMIT 1");
+            $row = mysqli_fetch_assoc($sewa_user);
+            $jenis_lapangan = $row['jenis_lapangan'];
+            $update_status = mysqli_query($koneksi, "UPDATE status_lapangan_indoor SET status = '0' WHERE jenis_lapangan = '$jenis_lapangan'");
+            header('location:booking/user_book.php');
+        } else if ($lapangan == 'OUTDOOR') {
+            $sewa_user = mysqli_query($koneksi, "SELECT * FROM sewa_user ORDER BY id DESC LIMIT 1");
+            $row = mysqli_fetch_assoc($sewa_user);
+            $jenis_lapangan = $row['jenis_lapangan'];
+            $update_status = mysqli_query($koneksi, "UPDATE status_lapangan_outdoor SET status = '0' WHERE jenis_lapangan = '$jenis_lapangan'");
+            header('location:booking/user_book.php');
+        }
     }
 }
 

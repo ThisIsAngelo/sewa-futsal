@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) {
 
 <body>
     <h1>Halo Admin <?= $username ?></h1>
-    <a href="index.php">Back</a>
+    <a href="user.php">Back</a>
     <br><br>
     <table border="1">
         <thead>
