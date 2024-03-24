@@ -149,6 +149,82 @@ $sql = mysqli_query($koneksi, "SELECT * FROM harga_sewa")
                 </div>
             </div>
         </section>
+        <section id="book" class="book">
+            <div class="title">
+                <h1>BOOK</h1>
+                <p>Mulai petualangan futsal Anda dengan booking lapangan sekarang!</p>
+            </div>
+            <div class="content">
+                <div class="col-1">
+                    <h1>Gain the <span>BEST <br>EXPERIENCE</span> with <br>starting your booking</h1>
+                    <p class="description">Disini anda dapat memilih jenis lapangan yang diinginkan, termasuk reguler, matras, atau rumput, saat melakukan booking lapangan futsal di halaman booking kami untuk menyesuaikan dengan kebutuhan anda.</p>
+                    <div class="row-1">
+                        <div class="group-1">
+                            <h6>110<span>x</span></h6>
+                            <p>Lapangan Reguler telah dipesan</p>
+                        </div>
+                        <div class="group-2">
+                            <h6>87<span>x</span></h6>
+                            <p>Lapangan Matras telah dipesan</p>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <div class="group-1">
+                            <h6>132<span>x</span></h6>
+                            <p>Lapangan Rumput telah dipesan</p>
+                        </div>
+                        <div class="group-2">
+                            <h6>329<span>x</span></h6>
+                            <p>Total Lapangan telah dipesan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="row-1">
+                        <img src="img/lapangan/lapangan-reguler.jpg" width="50">
+                        <div class="desc-1">
+                            <h6>Lapangan Reguler</h6>
+                            <p>110 Booking</p>
+                        </div>
+                        <div class="arrow">
+                            <?php if (isset($_SESSION['username'])) { ?>
+                                <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php } else { ?>
+                                <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <img src="img/lapangan/lapangan-matras.jpg" width="50">
+                        <div class="desc-2">
+                            <h6>Lapangan Matras</h6>
+                            <p>87 Booking</p>
+                        </div>
+                        <div class="arrow">
+                            <?php if (isset($_SESSION['username'])) { ?>
+                                <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php } else { ?>
+                                <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="row-3">
+                        <img src="img/lapangan/lapangan-rumput.jpg" width="50">
+                        <div class="desc-3">
+                            <h6>Lapangan Rumput</h6>
+                            <p>132 Booking</p>
+                        </div>
+                        <div class="arrow">
+                            <?php if (isset($_SESSION['username'])) { ?>
+                                <a href="booking/booking.php"><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php } else { ?>
+                                <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
 </body>

@@ -101,20 +101,6 @@ main .hero {
   background-size: cover;
 }
 
-/* main .hero::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 30%;
-  bottom: 0;
-  background: linear-gradient(
-    0deg,
-    rgb(255, 255, 255) 2%,
-    rgba(206, 206, 206, 0) 40%
-  );
-} */
-
 main .hero .content {
   display: flex;
   justify-content: center;
@@ -230,13 +216,14 @@ main .guide {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url(../img/guide-bg.jpg);
-  background-color: #2425cf;
+  background-image: url(../img/guide-bg.jpeg);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
-main .guide .title {
+main .guide .title,
+main .book .title {
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
@@ -244,12 +231,14 @@ main .guide .title {
   justify-content: center;
 }
 
-main .guide .title h1 {
+main .guide .title h1,
+main .book .title h1 {
   color: #fff;
   font-size: 36px;
 }
 
-main .guide .title p {
+main .guide .title p,
+main .book .title p {
   color: #fff;
   font-size: 14px;
   text-align: center;
@@ -272,9 +261,9 @@ main .guide .content::before {
   align-items: center;
   justify-content: center;
   margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 37%;
-  width: 90%;
+  margin-right: 8%;
+  margin-top: 38.5%;
+  width: 87%;
 }
 
 main .guide .content .col-1 {
@@ -388,4 +377,191 @@ main .guide .content .col-2 .row-5 .desc-5 p {
   font-size: 13.3px;
   color: #fff;
   font-weight: 300;
+}
+
+main .book {
+  display: flex;
+  flex-direction: column;
+  background-image: url(../img/book-bg.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+main .book .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 1rem;
+  width: 90%;
+}
+
+main .book .content .col-1 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1rem;
+}
+
+main .book .content .col-1 h1 {
+  color: #fff;
+  font-size: 42px;
+}
+
+main .book .content .col-1 h1 span {
+  color: #e82c3d;
+}
+
+main .book .content .col-1 .description {
+  color: #cdcdce;
+  text-align: justify;
+  width: 80%;
+}
+
+main .book .content .col-1 .row-1,
+main .book .content .col-1 .row-2 {
+  display: flex;
+  gap: 2rem;
+}
+
+main .book .content .col-1 .row-1 .group-1,
+main .book .content .col-1 .row-1 .group-2,
+main .book .content .col-1 .row-2 .group-1,
+main .book .content .col-1 .row-2 .group-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+main .book .content .col-1 .row-1 .group-1 h6,
+main .book .content .col-1 .row-1 .group-2 h6,
+main .book .content .col-1 .row-2 .group-1 h6,
+main .book .content .col-1 .row-2 .group-2 h6 {
+  font-size: 28px;
+  color: #fff;
+}
+
+main .book .content .col-1 .row-1 .group-1 h6 span,
+main .book .content .col-1 .row-1 .group-2 h6 span,
+main .book .content .col-1 .row-2 .group-1 h6 span,
+main .book .content .col-1 .row-2 .group-2 h6 span {
+  font-size: 20px;
+}
+
+main .book .content .col-1 .row-1 .group-1 p,
+main .book .content .col-1 .row-1 .group-2 p,
+main .book .content .col-1 .row-2 .group-1 p,
+main .book .content .col-1 .row-2 .group-2 p {
+  font-size: 14px;
+  color: #cdcdce;
+}
+
+main .book .content .col-2 {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  gap: 2rem;
+}
+
+main .book .content .col-2 .row-1,
+main .book .content .col-2 .row-2,
+main .book .content .col-2 .row-3 {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+main .book .content .col-2 .row-1::after,
+main .book .content .col-2 .row-2::after,
+main .book .content .col-2 .row-3::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #fff;
+  padding: 1px;
+  width: 40%;
+  margin-top: 7.5rem;
+}
+
+main .book .content .col-2 .row-1 img,
+main .book .content .col-2 .row-2 img,
+main .book .content .col-2 .row-3 img {
+  width: 35%;
+  height: 7rem;
+}
+
+main .book .content .col-2 .row-1 .desc-1,
+main .book .content .col-2 .row-2 .desc-2,
+main .book .content .col-2 .row-3 .desc-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: -5rem;
+  width: 40%;
+}
+
+main .book .content .col-2 .row-1 .desc-1 h6,
+main .book .content .col-2 .row-2 .desc-2 h6,
+main .book .content .col-2 .row-3 .desc-3 h6 {
+  color: #fff;
+  font-size: 22px;
+}
+
+main .book .content .col-2 .row-1 .desc-1 h6 span,
+main .book .content .col-2 .row-2 .desc-2 h6 span,
+main .book .content .col-2 .row-3 .desc-3 h6 span {
+  color: #e82c3d;
+}
+
+main .book .content .col-2 .row-1 .desc-1 p,
+main .book .content .col-2 .row-2 .desc-2 p,
+main .book .content .col-2 .row-3 .desc-3 p {
+  color: #c2c2c2;
+  font-size: 14px;
+}
+
+main .book .content .col-2 .row-1 .arrow,
+main .book .content .col-2 .row-2 .arrow,
+main .book .content .col-2 .row-3 .arrow {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+main .book .content .col-2 .row-1 a i,
+main .book .content .col-2 .row-2 a i,
+main .book .content .col-2 .row-3 a i {
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.2s ease-in;
+}
+
+main .book .content .col-2 .row-1 a i:hover,
+main .book .content .col-2 .row-2 a i:hover,
+main .book .content .col-2 .row-3 a i:hover {
+  color: #e82c3d;
+  animation: Shake 0.3s linear;
+}
+
+@keyframes Shake {
+  0% {
+    transform: rotate(8deg);
+  }
+
+  25% {
+    transform: rotate(-9deg);
+  }
+
+  50% {
+    transform: rotate(85%);
+  }
+
+  75% {
+    transform: rotate(-9deg);
+  }
+
+  100% {
+    transform: rotate(8deg);
+  }
 }

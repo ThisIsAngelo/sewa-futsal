@@ -6,6 +6,11 @@ $role = $_SESSION['role'];
 
 $no = 0;
 $sql = mysqli_query($koneksi, "SELECT * FROM account");
+
+if (!isset($_SESSION['username'])) {
+    header('location:login.html');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
