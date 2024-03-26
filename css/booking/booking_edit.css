@@ -1,0 +1,41 @@
+:root {
+  --ld: "Lexend Deca", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.container form input,
+select {
+  margin-bottom: 0.5rem;
+}
+
+.container form label {
+  font-size: 14px;
+}

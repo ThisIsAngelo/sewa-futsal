@@ -72,20 +72,33 @@ header .extra-nav {
 }
 
 header .extra-nav a {
+  color: #fff;
+}
+
+header .extra-nav a i {
+  color: #fff;
+  font-size: 22px;
+  transition: 0.1s ease-in;
+}
+
+header .extra-nav a i:hover {
+  color: #c2c2c2;
+}
+
+header .extra-nav .login,
+header .extra-nav .register {
   font-family: var(--ld);
   color: #fff;
 }
 
-header .extra-nav .register,
-header .extra-nav .logout {
+header .extra-nav .register {
   padding: 10px;
   border: 3px solid #fff;
   border-radius: 5px;
   transition: 0.2s ease-in;
 }
 
-header .extra-nav .register:hover,
-header .extra-nav .logout:hover {
+header .extra-nav .register:hover {
   background-color: #fff;
   color: #000;
 }

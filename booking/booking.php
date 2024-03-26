@@ -1,4 +1,5 @@
 <?php
+include '../koneksi.php';
 session_start();
 $username = $_SESSION['username'];
 $id_user = $_SESSION['id'];
@@ -8,6 +9,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +18,12 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/booking.css">
+    <link rel="stylesheet" href="../css/booking/booking.css">
     <link rel="icon" href="../img/logo-icon.jpeg">
+
+    <!-- Icon -->
+    <script src="https://kit.fontawesome.com/88d08e83f5.js" crossorigin="anonymous"></script>
+
     <title>Booking</title>
 </head>
 
@@ -30,11 +36,8 @@ if (!isset($_SESSION['username'])) {
         </div>
 
         <div class="extra-nav">
-            <?php
-            if (isset($_SESSION['username'])) {
-            ?>
-                <a href="../logout.php" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
-            <?php } ?>
+            <a href="user_book.php" title="Profile"><i class="fa-regular fa-user"></i></a>
+            <a href="logout.php" title="Logout" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </nav>
 
@@ -58,7 +61,7 @@ if (!isset($_SESSION['username'])) {
                         </div>
                         <div class="col-3">
                             <label for="durasi">Durasi Sewa</label>
-                            <input type="number" id="durasi_sewa" name="durasi_sewa" placeholder="Hitungan Jam" required>
+                            <input type="number" id="durasi_sewa" name="durasi_sewa" placeholder="Hitungan Jam" required min='0'>
                         </div>
                     </div>
                     <div class="row-3">

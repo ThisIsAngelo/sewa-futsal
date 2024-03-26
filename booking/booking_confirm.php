@@ -19,7 +19,11 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo-icon.jpeg">
-    <link rel="stylesheet" href="../css/booking_confirm.css">
+    <link rel="stylesheet" href="../css/booking/booking_confirm.css">
+
+    <!-- Icon -->
+    <script src="https://kit.fontawesome.com/88d08e83f5.js" crossorigin="anonymous"></script>
+
     <title>Confirm Your Booking</title>
 </head>
 
@@ -31,11 +35,8 @@ if (!isset($_SESSION['username'])) {
         </div>
 
         <div class="extra-nav">
-            <?php
-            if (isset($_SESSION['username'])) {
-            ?>
-                <a href="../logout.php" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
-            <?php } ?>
+            <a href="user_book.php" title="Profile"><i class="fa-regular fa-user"></i></a>
+            <a href="logout.php" title="Logout" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </nav>
     <main>
