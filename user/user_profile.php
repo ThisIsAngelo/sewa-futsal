@@ -1,16 +1,18 @@
 <?php
 include '../koneksi.php';
 session_start();
-
+$id_user = $_SESSION['id'];
 $username = $_SESSION['username'];
-$sql = mysqli_query($koneksi, "SELECT * FROM sewa_confirm");
-$no = 0;
 
 if (!isset($_SESSION['username'])) {
     header('location:../login.html');
     exit();
 }
+$no = 0;
+
+$sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user'");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,32 +20,31 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/logo-icon.jpeg">
-    <link rel="stylesheet" href="../css/booking/booking_confirm.css">
-
-    <!-- Icon -->
-    <script src="https://kit.fontawesome.com/88d08e83f5.js" crossorigin="anonymous"></script>
-
-    <title>Confirm Your Booking</title>
+    <link rel="stylesheet" href="../css/">
+    <title>UserBook</title>
 </head>
 
 <body>
-    <nav>
+
+    <header>
         <div class="logo">
             <img width="60" src="../img/logo.png">
             <a href="#">Futsalaxy</a>
         </div>
 
         <div class="extra-nav">
-            <a href="../user/user_profile.php" title="Profile" onclick="return confirm('Apakah anda yakin ingin pergi ke profile?')"><i class="fa-regular fa-user"></i></a>
             <a href="logout.php" title="Logout" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <h4><?= $username ?></h4>
         </div>
-    </nav>
+    </header>
+
     <main>
-        <div class="content">
-            <div class="container">
-                <h1>HALO <?= $username ?></h1>
-                <table>
+        <div class="sidebar">
+            <?php if (mysqli_num_rows($sql) == 0) { ?>
+                <h1>Kamu belum booking apapun</h1>
+            <?php } else { ?>
+
+                <table border="1">
                     <thead>
                         <?php while ($result = mysqli_fetch_assoc($sql)) { ?>
                             <tr>
@@ -81,20 +82,20 @@ if (!isset($_SESSION['username'])) {
                             <td><?php echo $result['bayar'] ?></td>
                             <td><?php echo $result['kembali'] ?></td>
                         </tr>
-                    <?php } ?>
+                <?php }
+                    }
+                ?>
                     </tbody>
                 </table>
-                <div class="row">
-                    <p>Apakah anda sudah yakin dengan pesanan anda?</p>
-                    <form method="post" action="../proses.php" class="action">
-                        <input type="submit" name="cancel" value="Cancel" onclick="return confirm('Apakah anda yakin ingin cancel?')">
-                        <input type="submit" name="confirm" value="Confirm" onclick="return confirm('Apakah anda sudah yakin?')">
-                    </form>
-                </div>
-            </div>
+                <?php if (mysqli_num_rows($sql) == 0) {  ?>
+                    <a href="../user.php">Back</a>
+                    <a href="booking.php">Booking Sekarang!</a>
+                <?php } else { ?>
+                    <a href="../user.php">Back</a>
+                    <a href="booking.php">Booking lagi?</a>
+                <?php } ?>
         </div>
     </main>
-
 </body>
 
 </html>

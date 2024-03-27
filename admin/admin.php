@@ -33,8 +33,9 @@ if (!isset($_SESSION['username'])) {
             <a href="booking_now.php">BOOKING SAAT INI <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="box-2">
-            <a href="booking_history.php">BOOKING HISTORY <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="booking_riwayat.php">BOOKING HISTORY <i class="fa-solid fa-arrow-right"></i></a>
         </div>
+        <a href="../logout.php">Logout</a>
     </div>
 </body>
 

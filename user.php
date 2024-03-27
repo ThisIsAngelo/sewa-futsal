@@ -47,7 +47,7 @@ if (!isset($_SESSION['username'])) {
         </nav>
 
         <div class="extra-nav">
-            <a href="booking/user_book.php" title="Profile"><i class="fa-regular fa-user"></i></a>
+            <a href="user/user_profile.php" title="Profile"><i class="fa-regular fa-user"></i></a>
             <a href="logout.php" title="Logout" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </header>

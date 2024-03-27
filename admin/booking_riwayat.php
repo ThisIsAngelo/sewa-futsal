@@ -1,17 +1,30 @@
 <?php
-include '../koneksi.php';
 session_start();
-$id_user = $_SESSION['id'];
+include '../koneksi.php';
 
 if (!isset($_SESSION['username'])) {
     header('location:../login.html');
     exit();
 }
+
+if (isset($_POST['search'])) {
+    $search_date = $_POST['search_date'];
+
+    $sql = mysqli_query($koneksi, "SELECT * FROM riwayat WHERE tgl_pesan = '$search_date'");
+} else {
+    $sql = mysqli_query($koneksi, 'SELECT * FROM riwayat');
+}
+
+if (isset($_POST['reset'])) {
+    $reset = $_POST['reset'];
+
+    $sql = mysqli_query($koneksi, "SELECT * FROM riwayat");
+}
+
+
+$count = mysqli_num_rows($sql);
 $no = 0;
-
-$sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user'");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +32,26 @@ $sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserBook</title>
+
+    <!-- Icon -->
+    <script src="https://kit.fontawesome.com/88d08e83f5.js" crossorigin="anonymous"></script>
+
+    <title>Booking Now</title>
 </head>
 
 <body>
+    <h1>RIWAYAT TRANSAKSI</h1>
 
-    <?php if (mysqli_num_rows($sql) == 0) { ?>
-        <h1>Kamu belum booking apapun</h1>
+    <form action="" method="post">
+        <label for="search_date">Search</label>
+        <input type="date" name="search_date" id="search_date">
+        <input type="submit" name="search" value="Submit">
+        <input type="submit" name="reset" value="Reset">
+    </form>
+    <?php if ($count == 0) { ?>
+        <h1>BELUM ADA RIWAYAT</h1>
+        <a href="admin.php">Back?</a>
     <?php } else { ?>
-
         <table border="1">
             <thead>
                 <?php while ($result = mysqli_fetch_assoc($sql)) { ?>
@@ -36,6 +60,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user
                     </tr>
                     <tr>
                         <th>No</th>
+                        <th>Id_User</th>
                         <th>Nama</th>
                         <th>Telepon</th>
                         <th>Tanggal</th>
@@ -53,6 +78,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user
             <tbody>
                 <tr>
                     <td><?php echo ++$no ?></td>
+                    <td><?php echo $result['id_user'] ?></td>
                     <td><?php echo $result['nama_pemesan'] ?></td>
                     <td><?php echo $result['no_telepon'] ?></td>
                     <td><?php echo $result['tgl_pesan'] ?></td>
@@ -67,17 +93,10 @@ $sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user
                     <td><?php echo $result['kembali'] ?></td>
                 </tr>
         <?php }
-            }
-        ?>
+            } ?>
             </tbody>
         </table>
-        <?php if (mysqli_num_rows($sql) == 0) {  ?>
-            <a href="../user.php">Back</a>
-            <a href="booking.php">Booking Sekarang!</a>
-        <?php } else { ?>
-            <a href="../user.php">Back</a>
-            <a href="booking.php">Booking lagi?</a>
-        <?php } ?>
+        <a href="admin.php">Back</a>
 </body>
 
 </html>

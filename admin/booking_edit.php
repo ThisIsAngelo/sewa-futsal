@@ -2,6 +2,11 @@
 session_start();
 include '../koneksi.php';
 
+if (!isset($_SESSION['username'])) {
+    header('location:../login.html');
+    exit();
+}
+
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id = '$id'");
@@ -83,7 +88,7 @@ if (isset($_GET['edit'])) {
             <input type="number" value="<?php echo $bayar ?>" name="bayar">
             <label for="">Kembali:</label>
             <input type="number" value="<?php echo $kembali ?>" name="kembali">
-            <input type="submit" value="Edit" name="admin">
+            <input type="submit" value="Edit" name="admin_edit">
         </form>
     </div>
 </body>

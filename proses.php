@@ -91,18 +91,18 @@ if (isset($_POST['confirm'])) {
             $row = mysqli_fetch_assoc($sewa_user);
             $jenis_lapangan = $row['jenis_lapangan'];
             $update_status = mysqli_query($koneksi, "UPDATE status_lapangan_indoor SET status = '0' WHERE jenis_lapangan = '$jenis_lapangan'");
-            header('location:booking/user_book.php');
+            header('location:user/user_profile.php');
         } else if ($lapangan == 'OUTDOOR') {
             $sewa_user = mysqli_query($koneksi, "SELECT * FROM sewa_user ORDER BY id DESC LIMIT 1");
             $row = mysqli_fetch_assoc($sewa_user);
             $jenis_lapangan = $row['jenis_lapangan'];
             $update_status = mysqli_query($koneksi, "UPDATE status_lapangan_outdoor SET status = '0' WHERE jenis_lapangan = '$jenis_lapangan'");
-            header('location:booking/user_book.php');
+            header('location:user/user_profile.php');
         }
     }
 }
 
-if (isset($_POST['admin'])) {
+if (isset($_POST['admin_edit'])) {
     $id = $_POST['id'];
     $nama_pemesan = $_POST['nama_pemesan'];
     $no_telepon = $_POST['no_telepon'];
@@ -125,6 +125,24 @@ if (isset($_POST['admin'])) {
     }
 }
 
+if (isset($_GET['admin_confirm'])) {
+    $id = $_GET['admin_confirm'];
+    $sqlRiwayat = mysqli_query($koneksi, "INSERT INTO riwayat (id_user,nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,jenis_lapangan,kostum,sepatu,total,bayar,kembali) SELECT id_user,nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,jenis_lapangan,kostum,sepatu,total,bayar,kembali FROM sewa_user WHERE id = '$id'");
+
+    if ($sqlRiwayat) {
+        $sqlDelete = mysqli_query($koneksi, "DELETE FROM sewa_user WHERE id = '$id'");
+        echo "<script>alert('Pesanan telah di konfirmasi!'); window.location.replace('admin/booking_now.php')</script>";
+    }
+}
+
+if (isset($_GET['admin_delete'])) {
+    $id = $_GET['admin_delete'];
+    $sql = mysqli_query($koneksi, "DELETE FROM sewa_user WHERE id = '$id'");
+
+    if ($sql) {
+        echo "<script>alert('Data berhasil di batalkan'); window.location.replace('admin/booking_now.php')</script>";
+    }
+}
 
 // code untuk saat kita ingin menampilkan data di halaman selanjutnya berdasarkan option yang kita select dari combo box
 // if (isset($_POST['lapangan'])) {
