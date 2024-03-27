@@ -59,12 +59,33 @@ if (isset($_POST['booking'])) {
     $bayar = $_POST['bayar'];
     $kembali = $_POST['kembali'];
 
-    $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (id_user,nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali) VALUES ('$id_user','$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', '$jenis_lapangan' , '$kostum', '$sepatu', '$total', '$bayar', '$kembali')");
-    if ($bayar < $total) {
-        echo "<script>alert('Uang tidak cukup'); window.location.replace('booking/booking.php');</script>";
-    } else {
-        if ($sql) {
-            echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking/booking_confirm.php');</script>";
+    if ($lapangan == 'INDOOR') {
+        $sql_status = mysqli_query($koneksi, "SELECT status FROM status_lapangan_indoor WHERE jenis_lapangan = '$jenis_lapangan'");
+        $data_status = mysqli_fetch_assoc($sql_status);
+        $status = $data_status['status'];
+        if ($status == 1) {
+            if ($bayar < $total) {
+                echo "<script>alert('Uang tidak cukup'); window.location.replace('booking/booking.php');</script>";
+            } else {
+                $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (id_user,nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali) VALUES ('$id_user','$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', '$jenis_lapangan' , '$kostum', '$sepatu', '$total', '$bayar', '$kembali')");
+                echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking/booking_confirm.php');</script>";
+            }
+        } else {
+            echo "<script>alert('Maaf lapangan $jenis_lapangan pada $lapangan sedang tidak tersedia'); window.location.replace('booking/booking.php')</script>";
+        }
+    } else if ($lapangan == 'OUTDOOR') {
+        $sql_status = mysqli_query($koneksi, "SELECT status FROM status_lapangan_outdoor WHERE jenis_lapangan = '$jenis_lapangan'");
+        $data_status = mysqli_fetch_assoc($sql_status);
+        $status = $data_status['status'];
+        if ($status == 1) {
+            if ($bayar < $total) {
+                echo "<script>alert('Uang tidak cukup'); window.location.replace('booking/booking.php');</script>";
+            } else {
+                $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (id_user,nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, jenis_lapangan, kostum, sepatu, total, bayar, kembali) VALUES ('$id_user','$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', '$jenis_lapangan' , '$kostum', '$sepatu', '$total', '$bayar', '$kembali')");
+                echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking/booking_confirm.php');</script>";
+            }
+        } else {
+            echo "<script>alert('Maaf lapangan $jenis_lapangan pada $lapangan sedang tidak tersedia'); window.location.replace('booking/booking.php')</script>";
         }
     }
 }
@@ -127,8 +148,18 @@ if (isset($_POST['admin_edit'])) {
 
 if (isset($_GET['admin_confirm'])) {
     $id = $_GET['admin_confirm'];
-    $sqlRiwayat = mysqli_query($koneksi, "INSERT INTO riwayat (id_user,nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,jenis_lapangan,kostum,sepatu,total,bayar,kembali) SELECT id_user,nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,jenis_lapangan,kostum,sepatu,total,bayar,kembali FROM sewa_user WHERE id = '$id'");
 
+    $cek = mysqli_query($koneksi, "SELECT lapangan,jenis_lapangan FROM sewa_user WHERE id = '$id'");
+    $dataCek = mysqli_fetch_assoc($cek);
+    $lapangan = $dataCek['lapangan'];
+    $jenis_lapangan = $dataCek['jenis_lapangan'];
+    if ($lapangan == 'INDOOR') {
+        $sqlUpdateStatus = mysqli_query($koneksi, "UPDATE status_lapangan_indoor SET status ='1' WHERE jenis_lapangan = '$jenis_lapangan'");
+    } else if ($lapangan == 'OUTDOOR') {
+        $sqlUpdateStatus = mysqli_query($koneksi, "UPDATE status_lapangan_outdoor SET status ='1' WHERE jenis_lapangan = '$jenis_lapangan'");
+    }
+
+    $sqlRiwayat = mysqli_query($koneksi, "INSERT INTO riwayat (id_user,nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,jenis_lapangan,kostum,sepatu,total,bayar,kembali) SELECT id_user,nama_pemesan,no_telepon,tgl_pesan,jam,durasi_sewa,jumlah_pemain,lapangan,jenis_lapangan,kostum,sepatu,total,bayar,kembali FROM sewa_user WHERE id = '$id'");
     if ($sqlRiwayat) {
         $sqlDelete = mysqli_query($koneksi, "DELETE FROM sewa_user WHERE id = '$id'");
         echo "<script>alert('Pesanan telah di konfirmasi!'); window.location.replace('admin/booking_now.php')</script>";

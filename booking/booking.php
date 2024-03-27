@@ -39,7 +39,7 @@ $outdoor = mysqli_query($koneksi, "SELECT * FROM status_lapangan_outdoor");
 
         <div class="extra-nav">
             <a href="../user/user_profile.php" title="Profile"><i class="fa-regular fa-user"></i></a>
-            <a href="logout.php" title="Logout" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <a href="../logout.php" title="Logout" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </nav>
 

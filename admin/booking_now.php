@@ -46,7 +46,6 @@ $no = 0;
     </form>
     <?php if ($count == 0) { ?>
         <h1>BELUM ADA YANG BOOKING</h1>
-        <a href="admin.php">Back?</a>
     <?php } else { ?>
         <table border="1">
             <thead>
@@ -98,6 +97,7 @@ $no = 0;
             } ?>
             </tbody>
         </table>
+        <a href="admin.php">Back?</a>
 </body>
 
 </html>
