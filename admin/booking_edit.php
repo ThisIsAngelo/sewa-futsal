@@ -53,9 +53,9 @@ if (isset($_GET['edit'])) {
             <label for="">Jam:</label>
             <input type="time" value="<?php echo $jam ?>" name="jam">
             <label for="">Durasi_Sewa:</label>
-            <input type="number" value="<?php echo $durasi_sewa ?>" name="durasi_sewa">
+            <input type="number" id="durasi_sewa" value="<?php echo $durasi_sewa ?>" name="durasi_sewa">
             <label for="">Jumlah_Pemain:</label>
-            <select name="jumlah_pemain">
+            <select name="jumlah_pemain" id="jumlah_pemain">
                 <option <?php if ($jumlah_pemain == 10) {
                             echo 'selected';
                         } ?> value="10">10 Orang</option>
@@ -64,7 +64,7 @@ if (isset($_GET['edit'])) {
                         } ?> value="20">20 Orang</option>
             </select>
             <label for="">Lapangan:</label>
-            <select name="lapangan">
+            <select name="lapangan" id="lapangan">
                 <option <?php if ($lapangan == 'INDOOR') {
                             echo 'selected';
                         } ?> value="INDOOR">INDOOR</option>
@@ -73,24 +73,97 @@ if (isset($_GET['edit'])) {
                         } ?> value="OUTDOOR">OUTDOOR</option>
             </select>
             <label for="">Jenis_Lapangan:</label>
-            <select name="jenis_lapangan">
+            <select name="jenis_lapangan" id="jenis_lapangan">
                 <option <?php if ($jenis_lapangan == 'Reguler') echo 'selected'; ?> value="Reguler">Reguler</option>
                 <option <?php if ($jenis_lapangan == 'Matras') echo 'selected'; ?> value="Matras">Matras</option>
                 <option <?php if ($jenis_lapangan == 'Rumput') echo 'selected'; ?> value="Rumput">Rumput</option>
             </select>
             <label for="">Kostum:</label>
-            <input type="number" value="<?php echo $kostum ?>" name="kostum">
+            <input type="number" value="<?php echo $kostum ?>" name="kostum" id="kostum">
             <label for="">Sepatu:</label>
-            <input type="number" value="<?php echo $sepatu ?>" name="sepatu">
+            <input type="number" value="<?php echo $sepatu ?>" name="sepatu" id="sepatu">
             <label for="">Total:</label>
-            <input type="number" value="<?php echo $total ?>" name="total">
+            <input type="number" value="<?php echo $total ?>" name="total" id="total">
             <label for="">Bayar:</label>
-            <input type="number" value="<?php echo $bayar ?>" name="bayar">
+            <input type="number" value="<?php echo $bayar ?>" name="bayar" id="bayar">
             <label for="">Kembali:</label>
-            <input type="number" value="<?php echo $kembali ?>" name="kembali">
+            <input type="number" value="<?php echo $kembali ?>" name="kembali" id="kembali">
             <input type="submit" value="Edit" name="admin_edit">
         </form>
     </div>
+
+    <script>
+        document.getElementById('durasi_sewa').addEventListener('keyup', updateHarga);
+        document.getElementById('jumlah_pemain').addEventListener('change', updateHarga);
+        document.getElementById('lapangan').addEventListener('change', updateHarga);
+        document.getElementById('jenis_lapangan').addEventListener('change', updateHarga);
+        document.getElementById('bayar').addEventListener('keyup', updateHarga);
+        document.getElementById('kostum').addEventListener('keyup', updateHarga);
+        document.getElementById('sepatu').addEventListener('keyup', updateHarga);
+
+        function updateHarga() {
+            const durasi = document.getElementById('durasi_sewa').value;
+            const jumlahPemain = document.getElementById('jumlah_pemain').value;
+            const lapangan = document.getElementById('lapangan').value;
+            const jenisLapangan = document.getElementById('jenis_lapangan').value;
+            const bayar = document.getElementById('bayar').value;
+            const kostum = document.getElementById('kostum').value;
+            const sepatu = document.getElementById('sepatu').value;
+
+            const regulerIndoor = 300000;
+            const matrasIndoor = 250000;
+            const rumputIndoor = 200000;
+            const regulerOutdoor = 250000;
+            const matrasOutdoor = 200000;
+            const rumputOutdoor = 150000;
+            const kostumPerJam = 50000;
+            const sepatuPerJam = 45000;
+            let totalHarga = 0
+
+            if (jumlahPemain == 10) {
+                if (lapangan == 'INDOOR') {
+                    if (jenisLapangan == 'Reguler') {
+                        totalHarga = regulerIndoor * durasi + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Matras') {
+                        totalHarga = matrasIndoor * durasi + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Rumput') {
+                        totalHarga = rumputIndoor * durasi + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    }
+                } else if (lapangan == 'OUTDOOR') {
+                    if (jenisLapangan == 'Reguler') {
+                        totalHarga = regulerOutdoor * durasi + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Matras') {
+                        totalHarga = matrasOutdoor * durasi + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Rumput') {
+                        totalHarga = rumputOutdoor * durasi + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    }
+                }
+            } else if (jumlahPemain == 20) {
+                if (lapangan == 'INDOOR') {
+                    if (jenisLapangan == 'Reguler') {
+                        totalHarga = regulerIndoor * durasi * 2 + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Matras') {
+                        totalHarga = matrasIndoor * durasi * 2 + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Rumput') {
+                        totalHarga = rumputIndoor * durasi * 2 + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    }
+                } else if (lapangan == 'OUTDOOR') {
+                    if (jenisLapangan == 'Reguler') {
+                        totalHarga = regulerOutdoor * durasi * 2 + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Matras') {
+                        totalHarga = matrasOutdoor * durasi * 2 + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    } else if (jenisLapangan == 'Rumput') {
+                        totalHarga = rumputOutdoor * durasi * 2 + (kostum * kostumPerJam) + (sepatu * sepatuPerJam);
+                    }
+                }
+            }
+
+            document.getElementById('total').value = totalHarga;
+             if (bayar) {
+                document.getElementById('kembali').value = bayar - totalHarga;
+            }
+        }
+    </script>
 </body>
 
 </html>

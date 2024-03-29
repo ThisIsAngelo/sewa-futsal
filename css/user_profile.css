@@ -15,5 +15,43 @@ html {
 
 body {
   font-family: "Lexend Deca", sans-serif;
-  background-color: #000;
+  background-color: #283641;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: blur(1px);
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 9999;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+header .logo a {
+  font-family: var(--ld);
+  font-weight: 500;
+  color: #fff;
+}
+
+header .extra-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header .extra-nav h4,
+header .extra-nav a {
+  color: #fff;
+  font-weight: 200;
 }

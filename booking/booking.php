@@ -8,10 +8,6 @@ if (!isset($_SESSION['username'])) {
     header('location:../login.html');
     exit();
 }
-
-$indoor = mysqli_query($koneksi, "SELECT * FROM status_lapangan_indoor");
-$outdoor = mysqli_query($koneksi, "SELECT * FROM status_lapangan_outdoor");
-
 ?>
 
 <!DOCTYPE html>
@@ -125,13 +121,13 @@ $outdoor = mysqli_query($koneksi, "SELECT * FROM status_lapangan_outdoor");
         </section>
     </main>
     <script>
-        document.getElementById('durasi_sewa').addEventListener('change', updateHarga);
+        document.getElementById('durasi_sewa').addEventListener('keyup', updateHarga);
         document.getElementById('jumlah_pemain').addEventListener('change', updateHarga);
         document.getElementById('lapangan').addEventListener('change', updateHarga);
         document.getElementById('jenis_lapangan').addEventListener('change', updateHarga);
-        document.getElementById('bayar').addEventListener('change', updateHarga);
-        document.getElementById('kostum').addEventListener('change', updateHarga);
-        document.getElementById('sepatu').addEventListener('change', updateHarga);
+        document.getElementById('bayar').addEventListener('keyup', updateHarga);
+        document.getElementById('kostum').addEventListener('keyup', updateHarga);
+        document.getElementById('sepatu').addEventListener('keyup', updateHarga);
 
         function updateHarga() {
             const durasi = document.getElementById('durasi_sewa').value;
@@ -191,7 +187,7 @@ $outdoor = mysqli_query($koneksi, "SELECT * FROM status_lapangan_outdoor");
             }
 
             document.getElementById('total').value = totalHarga;
-            if (bayar) {
+             if (bayar) {
                 document.getElementById('kembali').value = bayar - totalHarga;
             }
         }

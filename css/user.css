@@ -45,10 +45,6 @@ header .logo a {
   color: #fff;
 }
 
-header .logo img {
-  mix-blend-mode: multiply;
-}
-
 header .navbar {
   display: flex;
   align-items: center;
@@ -555,10 +551,10 @@ main .book .content .col-2 .row-1 a i:hover,
 main .book .content .col-2 .row-2 a i:hover,
 main .book .content .col-2 .row-3 a i:hover {
   color: #e82c3d;
-  animation: Shake 0.3s linear;
+  animation: Flip 0.3s linear;
 }
 
-@keyframes Shake {
+@keyframes Flip {
   0% {
     transform: rotate(8deg);
   }

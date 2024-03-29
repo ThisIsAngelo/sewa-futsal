@@ -5,7 +5,7 @@ include 'koneksi.php';
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
-    $sql = mysqli_query($koneksi, "SELECT id,username,password,role FROM account WHERE username = '$username' AND password = '$password'");
+    $sql = mysqli_query($koneksi, "SELECT * FROM account WHERE username = '$username' AND password = '$password'");
     $count = mysqli_num_rows($sql);
     $data = mysqli_fetch_array($sql);
 
@@ -34,12 +34,21 @@ if (isset($_POST['login'])) {
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = (md5($_POST['password']));
-    $sql = mysqli_query($koneksi, "INSERT INTO account (username,password) VALUES ('$username','$password')");
 
-    if ($sql) {
-        echo "<script>alert('Akun berhasil ditambahkan!'); window.location.replace('login.html');</script>";
+    $check = mysqli_query($koneksi, "SELECT username FROM account");
+    $data = mysqli_fetch_assoc($check);
+    $checkUsername = $data['username'];
+
+    if ($checkUsername == $username) {
+        echo "<script>alert('Username Telah di pakai'); window.location.replace('register.html')</script>";
     } else {
-        echo "<script>alert('Gagal')</script>";
+        $sql = mysqli_query($koneksi, "INSERT INTO account (username,password) VALUES ('$username','$password')");
+
+        if ($sql) {
+            echo "<script>alert('Akun berhasil ditambahkan!'); window.location.replace('login.html');</script>";
+        } else {
+            echo "<script>alert('Gagal')</script>";
+        }
     }
 }
 
@@ -48,8 +57,16 @@ if (isset($_POST['booking'])) {
     $nama_pemesan = $_POST['nama_pemesan'];
     $no_telepon = $_POST['no_telepon'];
     $tgl_pesan = $_POST['tgl_pesan'];
+
+
     $jam = $_POST['jam'];
     $durasi_sewa = $_POST['durasi_sewa'];
+    // $durasi_detik = $durasi_sewa * 3600;
+    // $durasi_sewa_waktu = strtotime("+$durasi_detik seconds", strtotime($jam));
+    // $jam_sewa_berakhir = date('H:i', $durasi_sewa_waktu);
+    // echo "Jam Mulai: $jam <br>";
+    // echo "Jam Berakhir: $jam_sewa_berakhir";
+    // die();
     $jumlah_pemain = $_POST['jumlah_pemain'];
     $lapangan = $_POST['lapangan'];
     $jenis_lapangan = $_POST['jenis_lapangan'];
@@ -123,6 +140,8 @@ if (isset($_POST['confirm'])) {
     }
 }
 
+
+
 if (isset($_POST['admin_edit'])) {
     $id = $_POST['id'];
     $nama_pemesan = $_POST['nama_pemesan'];
@@ -174,46 +193,3 @@ if (isset($_GET['admin_delete'])) {
         echo "<script>alert('Data berhasil di batalkan'); window.location.replace('admin/booking_now.php')</script>";
     }
 }
-
-// code untuk saat kita ingin menampilkan data di halaman selanjutnya berdasarkan option yang kita select dari combo box
-// if (isset($_POST['lapangan'])) {
-//     if ($_POST['lapangan'] == "INDOOR") {
-//         $nama_pemesan = $_POST['nama_pemesan'];
-//         $no_telepon = $_POST['no_telepon'];
-//         $tgl_pesan = $_POST['tgl_pesan'];
-//         $jam = $_POST['jam'];
-//         $durasi_sewa = $_POST['durasi_sewa'];
-//         $jumlah_pemain = $_POST['jumlah_pemain'];
-//         $lapangan = $_POST['lapangan'];
-//         $kostum = $_POST['kostum'];
-//         $sepatu = $_POST['sepatu'];
-//         $total = $_POST['total'];
-//         $bayar = $_POST['bayar'];
-
-//         $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, reguler, matras, rumput, kostum, sepatu, total, bayar)
-//         SELECT '$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', reguler_indoor, matras_indoor, rumput_indoor, '$kostum', '$sepatu', '$total', '$bayar'
-//         FROM harga_sewa");
-//         if ($sql) {
-//             echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking/booking_confirm.php');</script>";
-//         }
-//     } else if ($_POST['lapangan'] == "OUTDOOR") {
-//         $nama_pemesan = $_POST['nama_pemesan'];
-//         $no_telepon = $_POST['no_telepon'];
-//         $tgl_pesan = $_POST['tgl_pesan'];
-//         $jam = $_POST['jam'];
-//         $durasi_sewa = $_POST['durasi_sewa'];
-//         $jumlah_pemain = $_POST['jumlah_pemain'];
-//         $lapangan = $_POST['lapangan'];
-//         $kostum = $_POST['kostum'];
-//         $sepatu = $_POST['sepatu'];
-//         $total = $_POST['total'];
-//         $bayar = $_POST['bayar'];
-
-//         $sql = mysqli_query($koneksi, "INSERT INTO sewa_confirm (nama_pemesan, no_telepon, tgl_pesan, jam, durasi_sewa, jumlah_pemain, lapangan, reguler, matras, rumput, kostum, sepatu, total, bayar)
-//     SELECT '$nama_pemesan', '$no_telepon', '$tgl_pesan', '$jam', '$durasi_sewa', '$jumlah_pemain', '$lapangan', reguler_outdoor, matras_outdoor, rumput_outdoor, '$kostum', '$sepatu', '$total', '$bayar'
-//     FROM harga_sewa");
-//         if ($sql) {
-//             echo "<script>alert('Harap Konfirmasi Telebih Dahulu!'); window.location.replace('booking/booking_confirm.php');</script>";
-//         }
-//     }
-// }
