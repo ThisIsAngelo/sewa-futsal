@@ -1,11 +1,7 @@
 <?php
-session_start();
 include '../koneksi.php';
-
-if (!isset($_SESSION['username'])) {
-    header('location:../login.html');
-    exit();
-}
+include '../authAdmin.php';
+include '../auth.php';
 
 if (isset($_POST['search'])) {
     $search_date = $_POST['search_date'];

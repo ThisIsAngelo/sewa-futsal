@@ -1,11 +1,7 @@
 <?php
-session_start();
 include '../koneksi.php';
-
-if (!isset($_SESSION['username'])) {
-    header('location:../login.html');
-    exit();
-}
+include '../authAdmin.php';
+include '../auth.php';
 
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];

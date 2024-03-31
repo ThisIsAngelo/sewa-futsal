@@ -1,15 +1,9 @@
 <?php
 include '../koneksi.php';
-session_start();
-
+include '../auth.php';
 $username = $_SESSION['username'];
 $sql = mysqli_query($koneksi, "SELECT * FROM sewa_confirm");
 $no = 0;
-
-if (!isset($_SESSION['username'])) {
-    header('location:../login.html');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>

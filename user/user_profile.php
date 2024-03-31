@@ -1,13 +1,10 @@
 <?php
 include '../koneksi.php';
-session_start();
+include '../auth.php';
 $id_user = $_SESSION['id'];
 $username = $_SESSION['username'];
 
-if (!isset($_SESSION['username'])) {
-    header('location:../login.html');
-    exit();
-}
+
 $no = 0;
 
 $sql = mysqli_query($koneksi, "SELECT * FROM sewa_user WHERE id_user = '$id_user'");

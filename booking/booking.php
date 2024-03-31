@@ -1,13 +1,9 @@
 <?php
 include '../koneksi.php';
-session_start();
+include '../auth.php';
 $username = $_SESSION['username'];
 $id_user = $_SESSION['id'];
 
-if (!isset($_SESSION['username'])) {
-    header('location:../login.html');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>

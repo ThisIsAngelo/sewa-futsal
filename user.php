@@ -2,13 +2,13 @@
 include 'koneksi.php';
 session_start();
 
+if(!isset($_SESSION['username'])) {
+    header('location:login.php');
+    exit();
+}
 $id = $_SESSION['id'];
 $username = $_SESSION['username'];
 
-if (!isset($_SESSION['username'])) {
-    header('location:login.html');
-    exit();
-}
 ?>
 
 

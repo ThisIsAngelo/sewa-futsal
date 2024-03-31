@@ -3,27 +3,32 @@ session_start();
 include 'koneksi.php';
 
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    $sql = mysqli_query($koneksi, "SELECT * FROM account WHERE username = '$username' AND password = '$password'");
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+    $sql = mysqli_query($koneksi, "SELECT * FROM account WHERE username = '$username'");
     $count = mysqli_num_rows($sql);
-    $data = mysqli_fetch_array($sql);
+    $accData = mysqli_fetch_array($sql);
+    $passwordNow = $accData['password'];
 
     if ($count > 0) {
-        $role = $data['role'];
-        $id = $data['id'];
+        if (password_verify($password, $passwordNow)) {
+            $role = $accData['role'];
+            $id = $accData['id'];
 
-        if ($role == 1) {
-            $_SESSION['username'] = $username;
-            $_SESSION['role'] = $role;
-            header('location:admin/admin.php');
-            exit();
-        } else if ($role == 0) {
-            $_SESSION['id'] = $id;
-            $_SESSION['username'] = $username;
-            $_SESSION['role'] = $role;
-            header('location:user.php');
-            exit();
+            if ($role == 1) {
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = $role;
+                $_SESSION['login'] = true;
+                header('location:admin/admin.php');
+                exit();
+            } else if ($role == 0) {
+                $_SESSION['id'] = $id;
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = $role;
+                $_SESSION['login'] = true;
+                header('location:user.php');
+                exit();
+            }
         }
     } else {
         echo "<script>alert('Login Gagal!'); window.location.replace('login.html');</script>";
@@ -32,12 +37,13 @@ if (isset($_POST['login'])) {
 }
 
 if (isset($_POST['register'])) {
-    $username = $_POST['username'];
-    $password = (md5($_POST['password']));
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
     $check = mysqli_query($koneksi, "SELECT username FROM account");
-    $data = mysqli_fetch_assoc($check);
-    $checkUsername = $data['username'];
+    $accData = mysqli_fetch_assoc($check);
+    $checkUsername = $accData['username'];
 
     if ($checkUsername == $username) {
         echo "<script>alert('Username Telah di pakai'); window.location.replace('register.html')</script>";
