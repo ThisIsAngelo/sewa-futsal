@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['login'])){
+if (isset($_SESSION['login'])) {
   echo "<script>alert('Kamu sudah login!'); window.location.replace('user.php')</script>";
   exit;
 }
@@ -26,7 +26,7 @@ if (isset($_SESSION['login'])){
         <input type="text" required name="username" placeholder="Username" />
         <input type="password" required name="password" placeholder="Password" />
         <input type="submit" value="Submit" name="login" />
-        <p>Don't have account? <a href="register.html">Register</a></p>
+        <p>Don't have account? <a href="register.php">Register</a></p>
         <p><a class="back" href="index.html">Back?</a></p>
       </form>
     </div>

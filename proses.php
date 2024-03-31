@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
             }
         }
     } else {
-        echo "<script>alert('Login Gagal!'); window.location.replace('login.html');</script>";
+        echo "<script>alert('Login Gagal!'); window.location.replace('login.php');</script>";
         exit();
     }
 }
@@ -46,12 +46,12 @@ if (isset($_POST['register'])) {
     $checkUsername = $accData['username'];
 
     if ($checkUsername == $username) {
-        echo "<script>alert('Username Telah di pakai'); window.location.replace('register.html')</script>";
+        echo "<script>alert('Username Telah di pakai'); window.location.replace('register.php')</script>";
     } else {
         $sql = mysqli_query($koneksi, "INSERT INTO account (username,password) VALUES ('$username','$password')");
 
         if ($sql) {
-            echo "<script>alert('Akun berhasil ditambahkan!'); window.location.replace('login.html');</script>";
+            echo "<script>alert('Akun berhasil ditambahkan!'); window.location.replace('login.php');</script>";
         } else {
             echo "<script>alert('Gagal')</script>";
         }

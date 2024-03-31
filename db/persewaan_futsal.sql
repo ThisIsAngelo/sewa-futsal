@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2024 at 06:16 PM
+-- Generation Time: Mar 31, 2024 at 07:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,42 +39,32 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `role`) VALUES
-(1, 'Chris', '202cb962ac59075b964b07152d234b70', 1),
-(2, 'Steve', '202cb962ac59075b964b07152d234b70', 0),
-(3, 'Ayam', '202cb962ac59075b964b07152d234b70', 0),
-(4, 'Angelo', 'bffa783a022fe2d98692014dda6d7a4c', 0),
-(5, 'Pino', '202cb962ac59075b964b07152d234b70', 0),
-(6, 'Fatah', '202cb962ac59075b964b07152d234b70', 0),
-(7, '123', '202cb962ac59075b964b07152d234b70', 0),
-(8, 'halo', '202cb962ac59075b964b07152d234b70', 0),
-(9, 'asdaha', '33df1b9b8ca30f9f6b7febd0fd874f0f', 0),
-(10, 'Rena', 'af7c5fe76c002dbbea7f2849716d516f', 0),
-(11, 'Revo', '202cb962ac59075b964b07152d234b70', 0);
+(31, 'Admin', '$2y$10$sHuA6it7h8NpiRNrFAjpKOnb1BRtCQRHt9SiwNWitjrj7X2Z.K06.', 1),
+(32, 'Steve', '$2y$10$8wr.hJWVwXAyWuQK3pxH3OYGDxx/R053HdjP5Br.H.2LGnDGA3Lcm', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `harga_sewa`
+-- Table structure for table `riwayat`
 --
 
-CREATE TABLE `harga_sewa` (
+CREATE TABLE `riwayat` (
   `id` int(11) NOT NULL,
-  `reguler_indoor` int(25) NOT NULL,
-  `matras_indoor` int(25) NOT NULL,
-  `rumput_indoor` int(25) NOT NULL,
-  `reguler_outdoor` int(25) NOT NULL,
-  `matras_outdoor` int(25) NOT NULL,
-  `rumput_outdoor` int(25) NOT NULL,
-  `sepatu_tambahan` int(25) NOT NULL,
-  `kostum_tambahan` int(25) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `nama_pemesan` varchar(50) NOT NULL,
+  `no_telepon` varchar(20) NOT NULL,
+  `tgl_pesan` date NOT NULL,
+  `jam` time NOT NULL,
+  `durasi_sewa` int(11) NOT NULL,
+  `jumlah_pemain` int(11) NOT NULL,
+  `lapangan` varchar(7) NOT NULL,
+  `jenis_lapangan` varchar(10) NOT NULL,
+  `kostum` int(11) NOT NULL,
+  `sepatu` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `bayar` int(11) NOT NULL,
+  `kembali` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `harga_sewa`
---
-
-INSERT INTO `harga_sewa` (`id`, `reguler_indoor`, `matras_indoor`, `rumput_indoor`, `reguler_outdoor`, `matras_outdoor`, `rumput_outdoor`, `sepatu_tambahan`, `kostum_tambahan`) VALUES
-(1, 300000, 250000, 200000, 250000, 200000, 150000, 50000, 45000);
 
 -- --------------------------------------------------------
 
@@ -141,9 +131,9 @@ CREATE TABLE `status_lapangan_indoor` (
 --
 
 INSERT INTO `status_lapangan_indoor` (`id`, `jenis_lapangan`, `status`) VALUES
-(1, 'reguler', 1),
-(2, 'matras', 1),
-(3, 'rumput', 1);
+(1, 'Reguler', 0),
+(2, 'Matras', 1),
+(3, 'Rumput', 1);
 
 -- --------------------------------------------------------
 
@@ -162,9 +152,9 @@ CREATE TABLE `status_lapangan_outdoor` (
 --
 
 INSERT INTO `status_lapangan_outdoor` (`id`, `jenis_lapangan`, `status`) VALUES
-(1, 'reguler', 1),
-(2, 'matras', 1),
-(3, 'rumput', 1);
+(1, 'Reguler', 1),
+(2, 'Matras', 1),
+(3, 'Rumput', 0);
 
 --
 -- Indexes for dumped tables
@@ -178,10 +168,11 @@ ALTER TABLE `account`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `harga_sewa`
+-- Indexes for table `riwayat`
 --
-ALTER TABLE `harga_sewa`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `riwayat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `sewa_confirm`
@@ -217,25 +208,25 @@ ALTER TABLE `status_lapangan_outdoor`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `harga_sewa`
+-- AUTO_INCREMENT for table `riwayat`
 --
-ALTER TABLE `harga_sewa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `riwayat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sewa_confirm`
 --
 ALTER TABLE `sewa_confirm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `sewa_user`
 --
 ALTER TABLE `sewa_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `status_lapangan_indoor`
@@ -252,6 +243,12 @@ ALTER TABLE `status_lapangan_outdoor`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `riwayat`
+--
+ALTER TABLE `riwayat`
+  ADD CONSTRAINT `riwayat_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `account` (`id`);
 
 --
 -- Constraints for table `sewa_confirm`
