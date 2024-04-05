@@ -2,7 +2,8 @@
 include '../koneksi.php';
 include '../auth.php';
 $username = $_SESSION['username'];
-$sql = mysqli_query($koneksi, "SELECT * FROM sewa_confirm");
+$id = $_SESSION['id'];
+$sql = mysqli_query($koneksi, "SELECT * FROM sewa_confirm WHERE id_user = '$id'");
 $no = 0;
 ?>
 

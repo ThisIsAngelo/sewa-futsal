@@ -290,8 +290,7 @@ main .guide .content .col-1 .col-1-title h3 {
 
 main .guide .content .col-1 .description p {
   text-align: justify;
-  color: #fff;
-  font-weight: 200;
+  color: #cdcdce;
 }
 
 main .guide .content .col-1 .shape {
@@ -413,6 +412,7 @@ main .book .content .col-1 {
   flex-direction: column;
   width: 50%;
   gap: 1rem;
+  margin-left: -3rem;
 }
 
 main .book .content .col-1 h1 {
@@ -551,10 +551,10 @@ main .book .content .col-2 .row-1 a i:hover,
 main .book .content .col-2 .row-2 a i:hover,
 main .book .content .col-2 .row-3 a i:hover {
   color: #e82c3d;
-  animation: Flip 0.3s linear;
+  animation: Shake 0.3s linear;
 }
 
-@keyframes Flip {
+@keyframes Shake {
   0% {
     transform: rotate(8deg);
   }
