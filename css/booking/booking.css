@@ -18,6 +18,12 @@ body {
   background-color: #000;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 nav {
   position: absolute;
   display: flex;

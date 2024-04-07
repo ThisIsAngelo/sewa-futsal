@@ -31,7 +31,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM account");
         <div class="box-2">
             <a href="booking_riwayat.php">BOOKING HISTORY <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <a href="../logout.php">Logout</a>
+        <a href="../logout.php" onclick="return confirm('Apakah anda yakin ingin logout?')">Logout</a>
     </div>
 </body>
 

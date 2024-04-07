@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
-include '../authAdmin.php';
 include '../auth.php';
+include '../authAdmin.php';
 
 if (isset($_POST['search'])) {
     $search_date = $_POST['search_date'];

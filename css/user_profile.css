@@ -1,5 +1,7 @@
 :root {
   --ld: "Lexend Deca", sans-serif;
+  --bg: #f1eff2;
+  --bg2: #fffff0;
 }
 
 * {
@@ -7,6 +9,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  /* border: 1px solid red; */
 }
 
 html {
@@ -15,43 +18,185 @@ html {
 
 body {
   font-family: "Lexend Deca", sans-serif;
-  background-color: #283641;
+  /* background-color: #172a3a; */
+  background-image: url(../img/profile.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
-header {
-  position: fixed;
+.hero {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  backdrop-filter: blur(1px);
-  top: 0;
-  right: 0;
-  left: 0;
-  padding: 10px;
-  z-index: 9999;
+  backdrop-filter: brightness(40%);
 }
 
-header .logo {
+.hero .side-bar {
   display: flex;
-  align-items: center;
-  gap: 0.3rem;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 17rem;
+  border: 1px solid #fff;
+  border-width: 0 1px 0 0;
+  gap: 10vh;
 }
 
-header .logo a {
-  font-family: var(--ld);
+.hero .side-bar .row-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+}
+
+.hero .side-bar .row-1 h1 {
+  font-size: 22px;
+  color: var(--bg2);
   font-weight: 500;
-  color: #fff;
 }
 
-header .extra-nav {
+.hero .side-bar .row-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .side-bar .row-2 .square-1,
+.hero .side-bar .row-2 .square-2 {
+  padding: 10px;
+  cursor: pointer;
+  width: 90%;
+  transition: 0.2s ease-in;
+}
+
+.hero .side-bar .row-2 .square-1:hover,
+.hero .side-bar .row-2 .square-2:hover {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.hero .side-bar .row-2 .square-1 a,
+.hero .side-bar .row-2 .square-2 a {
+  color: #fff;
+  font-weight: 200;
+}
+
+.hero .side-bar .row-2 .square-1:hover a,
+.hero .side-bar .row-2 .square-2:hover a {
+  color: #000;
+}
+
+.hero .main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 25px;
+}
+
+.hero .main .row-1 {
+  display: flex;
+  gap: 5rem;
+}
+
+.hero .main .row-1 .square-1,
+.hero .main .row-1 .square-2, 
+.hero .main .row-1 .square-3, 
+.hero .main .row-1 .square-4 {
+  display: flex;
+  gap: .5rem;
+  padding: 20px;
+  width: 20%;
+  background-color: var(--bg);
+  border-radius: 0 40px 0 40px;
+  border: 8px ridge #fff;
+}
+
+.hero .main .row-1 .square-1 i,
+.hero .main .row-1 .square-2 i,
+.hero .main .row-1 .square-3 i,
+.hero .main .row-1 .square-4 i{
+  font-size: 40px;
+}
+
+.hero .main .row-1 .square-1 .desc, 
+.hero .main .row-1 .square-2 .desc, 
+.hero .main .row-1 .square-3 .desc, 
+.hero .main .row-1 .square-4 .desc {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: .3rem;
+}
+
+.hero .main .row-1 .square-1 .desc h6, 
+.hero .main .row-1 .square-2 .desc h6, 
+.hero .main .row-1 .square-3 .desc h6, 
+.hero .main .row-1 .square-4 .desc h6 {
+  font-size: 16px;
+  font-style: italic;
+  color: #000;
+}
+
+.hero .main .row-1 .square-1 .desc p, 
+.hero .main .row-1 .square-2 .desc p, 
+.hero .main .row-1 .square-3 .desc p, 
+.hero .main .row-1 .square-4 .desc p {
+  font-size: 14px;
+}
+
+.hero .main .row-2 {
+  min-height: 5vh;
+}
+
+.hero .main .row-2 h1 {
+  color: var(--bg);
+  font-size: 36px;
+}
+
+.hero .main .row-3 {
+  display: flex;
   gap: 1rem;
 }
 
-header .extra-nav h4,
-header .extra-nav a {
+.hero .main .row-3 a {
+  padding: 10px;
+  background-color: var(--bg);
+  border-radius:10px;
+  color: #000;
+  transition: .3s ease-in;
+}
+
+.hero .main .row-3 a:hover {
+  border: .5px inset var(--bg);
+  background-color: transparent;
   color: #fff;
-  font-weight: 200;
+} 
+
+.hero .main .row-4 {
+  min-height: 50vh;
+}
+
+.hero .main .row-4 table thead{
+  background-color: var(--bg);
+  border: 1px solid red;
+
+}
+
+.hero .main .row-4 table thead tr th {
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+.hero .main .row-4 table tbody {
+  background-color: var(--bg2);
+}
+
+.hero .main .row-4 table tbody tr td {
+  text-align: center;
+}
+
+.hero .main .row-4 table tbody tr:nth-child(even) {
+  background-color: var(--bg);
 }

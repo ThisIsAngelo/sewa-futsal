@@ -17,6 +17,12 @@ body {
   font-family: "Lexend Deca", sans-serif;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .container {
   display: flex;
   justify-content: center;
